@@ -5,36 +5,55 @@
 #                                                     +:+ +:+         +:+      #
 #    By: therodri <therodri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/11/20 09:46:49 by hlesny            #+#    #+#              #
-#    Updated: 2022/11/21 07:39:09 by therodri         ###   ########.fr        #
+#    Created: 2022/11/21 21:53:58 by therodri          #+#    #+#              #
+#    Updated: 2022/11/21 22:22:07 by therodri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
-SRC = ft_printf.c ft_pf_simpleft.c ft_pf_print.c ft_pf_count.c
-OBJECTS = $(SRC:.c=.o)
-LIBFT_OBJECTS = libft2/*.o
-LIBFT_PATH = libft2/
-AR = ar rc
-CC = gcc
+
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
+AR = ar rcs
+
+FILES = ft_printf ft_pf_print ft_pf_count ft_pf_simpleft\
+
+SRCS_DIR = ./
+SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))
+
+OBJS_DIR = ./
+OBJS = $(addprefix $(SRCS_DIR), $(addsuffix .o, $(FILES)))
+
+LIBFT_DIR = libft2/
+LIBFT_NAME = libft.a
+
+$(NAME): $(OBJS)
+	cp ${LIBFT_DIR}${LIBFT_NAME} $@
+	${AR} $@ $^
+
+$(OBJS): makelibft
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+makelibft:
+	cd ${LIBFT_DIR} && make
+
+fcleanlibft:
+	cd ${LIBFT_DIR} && make fclean
 
 all: $(NAME)
 
-bonus: re
+clean: fcleanlibft
+	rm -f $(OBJS) $(OBJS_BONUS)
 
-$(NAME): $(LIBFT_OBJECTS) compile libft
-	$(AR) $(NAME) $(OBJECTS) $(LIBFT_OBJECTS)
-compile : libft
-	$(CC) -c $(CFLAGS) -I$(LIBFT_PATH) $(SRC)
-libft:
-	make -C $(LIBFT_PATH) bonus
-clean:
-	rm -f $(OBJECTS)
-	make -C libft2/ clean
 fclean: clean
 	rm -f $(NAME)
-	rm -f ./libft2/libft.a
-re: fclean all
 
-.PHONY: all bonus libft clean fclean re compile
+re: clean all
+
+bonus:
+	cp ${LIBFT_DIR}${LIBFT_NAME} $@
+	${AR} $@ $<
+
+.PHONY: all clean fclean re
