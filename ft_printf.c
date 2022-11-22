@@ -6,7 +6,7 @@
 /*   By: therodri <therodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 23:02:10 by therodri          #+#    #+#             */
-/*   Updated: 2022/11/21 06:51:50 by therodri         ###   ########.fr       */
+/*   Updated: 2022/11/21 22:54:00 by therodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,15 @@ void	ft_init_struct(t_args *args)
 }
 
 /*
-ft_init_bal est appeler par ft_printf en boucle a chque % rencontre
-il permet de naviguer dans la balise changer la valeur des booleen des flags
-pour ce faire il boucle jusqu'a tomber sur un converteur
-il atoi des qu'il croise un chiffre qui n'est pas zero et le stock dans n[0]
-	ce sera la taille min du field
-s'il tombe sur un point il tentera de atoi a partir du caractere suivant
-s'il y parvient le nombre sera stocke dans args->n[1] et representera 
+ft_init_bal est appeler par ft_printf en boucle a chaque % rencontre
+	il permet de naviguer dans la balise changer la valeur des booleen des flags
+	pour ce faire il boucle jusqu'a tomber sur un converteur
+	il atoi des qu'il croise un chiffre qui n'est pas zero et le stock dans n[0]
+		ce sera la taille min du field
+	s'il tombe sur un point il tentera de atoi a partir du caractere suivant
+	s'il y parvient le nombre sera stocke dans args->n[1] et representera 
 	la precision, s'il echoue alors om icremente args-pre_z 
-		pour indiquer un pre null
+		pour indiquer une pre null
 */
 void	ft_init_bal(const char *str, t_args *args)
 {

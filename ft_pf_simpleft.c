@@ -6,7 +6,7 @@
 /*   By: therodri <therodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 03:28:42 by therodri          #+#    #+#             */
-/*   Updated: 2022/11/21 04:43:27 by therodri         ###   ########.fr       */
+/*   Updated: 2022/11/22 02:40:34 by therodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,28 @@ MEM	ft_abs(long int argslist, t_args *args)
 		return (argslist *= -1);
 	}
 	return (argslist);
+}
+
+int	ft_star(const char *str, va_list star, t_args *args)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	if (str[i] == '*')
+	{
+		j = va_arg(star, int);
+		if (j >= 0)
+			return (j);
+		else if (j < 0)
+		{
+			args->flags[1]++;
+			return (j * -1);
+		}
+	}
+	else if ((ft_isdigit(str[i]) || str[i] == '*') && args->n[0] <= 0
+		&& str[i] != '0' && args->flags[2] == 0)
+		return (ft_atoi(&str[i]));
+	else if (args->flags[2] > 0 && args->n[1] == 0)
+		return (ft_atoi(&str[i + 1]));
 }

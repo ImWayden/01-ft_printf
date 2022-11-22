@@ -6,7 +6,7 @@
 /*   By: therodri <therodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 04:42:58 by therodri          #+#    #+#             */
-/*   Updated: 2022/11/21 06:24:05 by therodri         ###   ########.fr       */
+/*   Updated: 2022/11/22 02:26:44 by therodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,11 @@ void	ft_putstr_c(MEM va_args, t_args *args)
 	{
 		str = (char *)va_args;
 		if (str == NULL)
+		{
+			if (args->n[1] < 6)
+				args->n[1] = 0;
 			str = "(null)";
+		}
 		while (str[n] && (n < args->n[1] || !args->flags[2]))
 		{
 			n++;
