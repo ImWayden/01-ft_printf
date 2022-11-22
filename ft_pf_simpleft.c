@@ -6,7 +6,7 @@
 /*   By: therodri <therodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 03:28:42 by therodri          #+#    #+#             */
-/*   Updated: 2022/11/22 02:40:34 by therodri         ###   ########.fr       */
+/*   Updated: 2022/11/22 02:42:22 by therodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,5 @@ int	ft_star(const char *str, va_list star, t_args *args)
 		return (ft_atoi(&str[i]));
 	else if (args->flags[2] > 0 && args->n[1] == 0)
 		return (ft_atoi(&str[i + 1]));
+	return (0);
 }
