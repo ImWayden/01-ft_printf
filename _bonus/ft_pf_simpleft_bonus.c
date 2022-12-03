@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pf_simpleft.c                                   :+:      :+:    :+:   */
+/*   ft_pf_simpleft_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: therodri <therodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 03:28:42 by therodri          #+#    #+#             */
-/*   Updated: 2022/12/03 11:56:44 by therodri         ###   ########.fr       */
+/*   Updated: 2022/12/03 13:21:50 by therodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
 char	ft_strchr_index(const char *s, int c)
 {

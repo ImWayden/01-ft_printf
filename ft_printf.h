@@ -6,13 +6,13 @@
 /*   By: therodri <therodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 23:10:37 by therodri          #+#    #+#             */
-/*   Updated: 2022/11/21 07:27:54 by therodri         ###   ########.fr       */
+/*   Updated: 2022/12/03 12:37:41 by therodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-# include "libft2/libft.h"
+# include "libft/libft.h"
 # include <limits.h>
 # include <stdarg.h>
 # include <stdio.h>

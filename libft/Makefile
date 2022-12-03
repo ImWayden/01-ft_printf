@@ -6,7 +6,7 @@
 #    By: therodri <therodri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 20:56:08 by therodri          #+#    #+#              #
-#    Updated: 2022/11/19 22:44:30 by therodri         ###   ########.fr        #
+#    Updated: 2022/12/03 13:05:09 by therodri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,14 +26,12 @@ CC = gcc
 
 all:$(NAME)
 
-so:
-	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRC)
-	gcc -nostartfiles -shared -o libft.so $(OBJ)
-	
-$(NAME): base
+$(NAME): $(OBJ)
 	ar rc $(NAME) $(OBJ)
-base:
-	$(CC) $(CFLAGS) $(SRC) 
+	
+%.o: %.c
+	@$(CC) $(CFLAGS) -c $< -o $@
+	
 bonus : fclean base suffix
 	ar rc $(NAME) $(OBJ) $(BONUSOBJ) 
 suffix: 
@@ -44,4 +42,6 @@ fclean : clean
 	/bin/rm -f $(NAME)
 
 re:	fclean all
+
+.PHONY : all base bonus $(NAME)
 	
